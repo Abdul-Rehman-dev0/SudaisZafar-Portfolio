@@ -1,0 +1,21 @@
+/* Base Vite styles are usually here. We add custom base styles. */
+
+/* Apply Inter font and dark background from the start */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0A1019; /* dark-bg color */
+  color: white;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background: #06b6d4; /* cyan-500 */
+  border-radius: 4px;
+}
