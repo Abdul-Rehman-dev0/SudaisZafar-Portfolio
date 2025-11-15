@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // Icon component sirf SVG paths handle karega, jaisa pehle tha
+// NOTE: I am assuming these utility components and data are correctly imported from the parent App structure.
 import { ModernCard, Icon, LogoIcon, LinkIcon } from '../components/UtilityComponents';
 import { profileData } from '../data';
 
@@ -96,7 +97,7 @@ const HomeView = ({ setPage }) => (
       </div>
     </ModernCard>
     
-    {/* 3. Stats Cards (MOVED UP - Now Row 2) */}
+    {/* 3. Stats Cards (Row 2, spanning 3 columns in total) */}
     {profileData.stats.map((stat, index) => (
       <ModernCard 
         key={index} 
@@ -109,69 +110,49 @@ const HomeView = ({ setPage }) => (
     ))}
     {/* -------------------------------------- */}
 
-    {/* 4. Credentials Card (Row 3, Col 1) - Click to About Page */}
-    <ModernCard 
-      onClick={() => setPage('about')} // 💡 Navigation added here
-      className="flex flex-col justify-between cursor-pointer hover:shadow-cyan-500/50 hover:shadow-lg transition duration-300"
-    >
-      <h2 className="text-xs tracking-widest text-gray-400 font-bold">MORE ABOUT ME</h2>
-      <div className="flex items-center space-x-2 my-4 text-white">
-        <LogoIcon />
-        <span className="text-xl font-semibold">Credentials</span>
-      </div>
-      <div className="flex justify-between items-center">
-        <p className="text-xs text-cyan-400">T WORK AND FEATURED</p>
-        {/* 💡 UPDATED: Ab sirf arrow icon dikhega - koi background, padding, ya shadow nahi. */}
-        <button 
-          onClick={(e) => { e.stopPropagation(); setPage('about'); }} // 💡 Button click also navigates
-          // Transparent button, arrow color: cyan-500, hover effect: cyan-300
-          className="p-2 transition duration-200 hover:text-cyan-300 text-cyan-500" 
-        >
-          {/* 💡 ICON SIZE: w-8 h-8 */}
-          <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-8 h-8" />
-        </button>
-      </div>
-    </ModernCard>
+    {/* 💡 NEW: Credentials (4) and Projects (5) now wrapped in a single container spanning 3 columns,
+        and using an internal 2-column grid for a 50/50 split on desktop. */}
+    <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    {/* 5. Projects Card (Row 3, Col 2) - Click to Works Page */}
-    <ModernCard 
-      onClick={() => setPage('works')} // 💡 Navigation added here
-      className="flex flex-col justify-between cursor-pointer hover:shadow-cyan-500/50 hover:shadow-lg transition duration-300"
-    >
-      <h2 className="text-xs tracking-widest text-gray-400 font-bold">MY WORKS</h2>
-      <h3 className="text-xl font-semibold text-white my-4">Showcase Projects</h3>
-      <div className="flex justify-between items-center">
-        <p className="text-xs text-cyan-400">+ LATEST WORK AND FEATURED</p>
-        {/* 💡 UPDATED: Ab sirf arrow icon dikhega - koi background, padding, ya shadow nahi. */}
-        <button 
-          onClick={(e) => { e.stopPropagation(); setPage('works'); }} // 💡 Button click also navigates
-          // Transparent button, arrow color: cyan-500, hover effect: cyan-300
-          className="p-2 transition duration-200 hover:text-cyan-300 text-cyan-500"
-        >
-          {/* 💡 ICON SIZE: w-8 h-8 */}
-          <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-8 h-8" />
-        </button>
-      </div>
-    </ModernCard>
+        {/* 4. Credentials Card (Equal Width - 50%) - Click to About Page */}
+        <ModernCard 
+          onClick={() => setPage('about')} // 💡 Navigation added here
+          className="flex flex-col justify-between cursor-pointer hover:shadow-cyan-500/50 hover:shadow-lg transition duration-300"
+        >
+          <h2 className="text-xs tracking-widest text-gray-400 font-bold">MORE ABOUT ME</h2>
+          <div className="flex items-center space-x-2 my-4 text-white">
+            <LogoIcon />
+            <span className="text-xl font-semibold">Credentials</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="text-xs text-cyan-400">T WORK AND FEATURED</p>
+            <button 
+              onClick={(e) => { e.stopPropagation(); setPage('about'); }} // 💡 Button click also navigates
+              className="p-2 transition duration-200 hover:text-cyan-300 text-cyan-500" 
+            >
+              <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-8 h-8" />
+            </button>
+          </div>
+        </ModernCard>
 
-    {/* 6. Blog/GFoants Card (Row 3, Col 3) */}
-    <ModernCard className="flex flex-col justify-between">
-      <h2 className="text-xs tracking-widest text-gray-400 font-bold">BLOG</h2>
-      <div className="my-4">
-        <div className="w-12 h-12 bg-white rounded-xl shadow-xl flex items-center justify-center">
-          <Icon path="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-4-8h-2V7h2v2zm4 0h-2V7h2v2z" className="w-8 h-8 text-red-500" />
-        </div>
-        <h3 className="text-xl font-semibold text-white mt-3">Gfonts</h3>
-      </div>
-      <div className="flex justify-between items-center">
-        <p className="text-xs text-cyan-400">SPECIALIZATION</p>
-        {/* 💡 UPDATED: Ab sirf arrow icon dikhega - koi background, padding, ya shadow nahi. */}
-        <button className="p-2 transition duration-200 hover:text-cyan-300 text-cyan-500">
-          {/* 💡 ICON SIZE: w-8 h-8 */}
-          <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-8 h-8" />
-        </button>
-      </div>
-    </ModernCard>
+        {/* 5. Projects Card (Equal Width - 50%) - Click to Works Page */}
+        <ModernCard 
+          onClick={() => setPage('works')} // 💡 Navigation added here
+          className="flex flex-col justify-between cursor-pointer hover:shadow-cyan-500/50 hover:shadow-lg transition duration-300"
+        >
+          <h2 className="text-xs tracking-widest text-gray-400 font-bold">MY WORKS</h2>
+          <h3 className="text-xl font-semibold text-white my-4">Showcase Projects</h3>
+          <div className="flex justify-between items-center">
+            <p className="text-xs text-cyan-400">+ LATEST WORK AND FEATURED</p>
+            <button 
+              onClick={(e) => { e.stopPropagation(); setPage('works'); }} // 💡 Button click also navigates
+              className="p-2 transition duration-200 hover:text-cyan-300 text-cyan-500"
+            >
+              <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-8 h-8" />
+            </button>
+          </div>
+        </ModernCard>
+    </div>
     
     {/* 7. Let's Work Together Card (Final CTA - lg:col-span-3) */}
     <ModernCard className="lg:col-span-3 flex flex-col justify-between animated-card-bg">
@@ -183,13 +164,10 @@ const HomeView = ({ setPage }) => (
         Let's work <span className="text-indigo-400">together.</span>
       </h1>
       <div className="flex justify-end mt-4">
-        {/* 💡 UPDATED: Ab sirf arrow icon dikhega - koi background, padding, ya shadow nahi. */}
         <button 
-          onClick={() => setPage('contact')} // Contact page navigation
-          // Transparent button, arrow color: cyan-500, hover effect: cyan-300
-          className="p-3 transition duration-200 hover:text-cyan-300 text-cyan-500"
-        >
-          {/* 💡 ICON SIZE: w-10 h-10 (For main CTA, thoda bada) */}
+          onClick={() => setPage('contact')} // Contact page navigation
+          className="p-3 transition duration-200 hover:text-cyan-300 text-cyan-500"
+        >
           <Icon path="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" className="w-10 h-10" />
         </button>
       </div>

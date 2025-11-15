@@ -164,7 +164,7 @@ const Navbar = ({ currentPage, setPage }) => {
             {/* 💡 Toast Notification Component Call */}
             <ToastNotification 
                 show={isDownloading} 
-                message="✅ CV Download started." 
+                message="✅ CV Downloaded." 
             />
 
             {/* 💻 Desktop Navbar */}
