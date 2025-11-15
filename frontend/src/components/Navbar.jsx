@@ -15,24 +15,37 @@ export const Icon = ({ path, className = 'w-6 h-6' }) => (
     </svg>
 );
 
-// 2. Logo Icon Component (Updated with your custom SVG)
-export const LogoIcon = ({ className = 'w-6 h-6' }) => {
-    return (
+// 2. Logo Icon Component (Original SVG code - used only on Desktop)
+export const LogoIcon = ({ className = 'w-6 h-6' }) => { 
+    
+    const gradientId = "paint0_linear_23_495";
+    
+    return (
         <svg 
             className={className}
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 38 38" 
             fill="none"
         >
-            {/* Background Rectangle with Gradient */}
-            <rect width="38" height="37.2567" rx="6" fill="url(#paint0_linear_23_495)"/>
             
-            {/* The Main Logo Path */}
-            <path d="M17.005 26.5L14.505 25L12.505 26.5V29L13.005 31L15.005 32C16.5599 32.6206 17.4343 32.0494 19.005 31C21.8811 29.3976 23.4482 28.486 25.005 26.5V17C24.7286 16.1371 24.2274 15.7094 23.005 15C22.1461 14.6007 21.5839 14.6514 20.505 15L17.005 17V13L20.505 11V12L23.005 13.5L25.505 12V8C25.7185 7.33606 24.3848 6.49707 22.0056 5.00034L22.005 5C19.1308 6.08927 18.1609 6.79941 16.005 8C13.4364 9.48988 12.6144 10.5615 12.505 13V19C12.4338 20.0029 12.4334 20.5611 13.005 21.5L15.005 22.5H17.005L20.505 20.5V24.5L17.005 26.5Z" fill="#171B22"/>
+            {/* Background Rectangle (Using original gradient) */}
+            <rect 
+                width="38" 
+                height="37.2567" 
+                rx="6" 
+                fill={`url(#${gradientId})`} 
+            />
             
-            {/* Gradient Definition (Mandatory for your logo to look correct) */}
+            {/* The Main Logo Path (Original dark color) */}
+            <path 
+                d="M17.005 26.5L14.505 25L12.505 26.5V29L13.005 31L15.005 32C16.5599 32.6206 17.4343 32.0494 19.005 31C21.8811 29.3976 23.4482 28.486 25.005 26.5V17C24.7286 16.1371 24.2274 15.7094 23.005 15C22.1461 14.6007 21.5839 14.6514 20.505 15L17.005 17V13L20.505 11V12L23.005 13.5L25.505 12V8C25.7185 7.33606 24.3848 6.49707 22.0056 5.00034L22.005 5C19.1308 6.08927 18.1609 6.79941 16.005 8C13.4364 9.48988 12.6144 10.5615 12.505 13V19C12.4338 20.0029 12.4334 20.5611 13.005 21.5L15.005 22.5H17.005L20.505 20.5V24.5L17.005 26.5Z" 
+                fill="#171B22" 
+            />
+            
+            {/* Gradient Definitions */}
             <defs>
-                <linearGradient id="paint0_linear_23_495" x1="19" y1="0" x2="19" y2="37.2567" gradientUnits="userSpaceOnUse">
+                {/* Original Desktop Gradient */}
+                <linearGradient id={gradientId} x1="19" y1="0" x2="19" y2="37.2567" gradientUnits="userSpaceOnUse">
                     <stop stop-color="white"/>
                     <stop offset="1" stop-color="#929292"/>
                 </linearGradient>
@@ -130,9 +143,9 @@ const Navbar = ({ currentPage, setPage }) => {
       {/* 💻 Desktop Navbar (Top, Visible on md screens and up) */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-4 bg-[#0A1019]/95 backdrop-blur-md shadow-2xl shadow-black/50 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo and Name (Uses the updated LogoIcon) */}
+          {/* Logo and Name */}
           <div className="flex items-center space-x-2 text-white text-3xl font-fancy">
-            <LogoIcon className="w-8 h-8"/> {/* Increased size slightly for better visibility */}
+            <LogoIcon className="w-8 h-8"/> 
             <span>Sudais Zafar</span>
           </div>
 
@@ -152,22 +165,21 @@ const Navbar = ({ currentPage, setPage }) => {
         </div>
       </nav>
 
-      {/* 📱 Mobile Top Bar (Logo + Download CV Button) - Visible below md screen size */}
+      {/* 📱 Mobile Top Bar (Name + Download CV Button) - Logo REMOVED */}
       <nav className="fixed top-0 left-0 right-0 z-40 p-4 bg-[#0A1019]/95 backdrop-blur-md shadow-2xl shadow-black/50 md:hidden">
-        {/* Changed from a simple div to flex justify-between to align items */}
+        
         <div className="flex justify-between items-center"> 
-          {/* Logo and Name (Uses the updated LogoIcon) */}
-          <div className="flex items-center space-x-2 text-white text-3xl font-fancy">
-            <LogoIcon className="w-8 h-8"/> {/* Increased size slightly for better visibility */}
-            <span>Sudais Zafar</span>
+          {/* Name ONLY for mobile, styled to look prominent */}
+          <div className="flex items-center text-white text-2xl font-fancy font-semibold"> 
+            <span>Sudais Zafar</span> {/* LOGO REMOVED, Name added */}
           </div>
           
-          {/* 💡 MOBILE CV DOWNLOAD BUTTON ADDED HERE */}
+          {/* MOBILE CV DOWNLOAD BUTTON */}
           <ActionButton 
               href="/Sudais_Zafar_CV.pdf" 
               download="Sudais_Zafar_CV.pdf" 
-              text="Download CV"
-              className="text-sm py-1.5 px-3" // Thoda chhota size mobile ke liye
+              text="Get CV" 
+              className="text-sm py-1.5 px-3 whitespace-nowrap"
           />
         </div>
       </nav>
