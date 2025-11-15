@@ -164,7 +164,7 @@ const Navbar = ({ currentPage, setPage }) => {
             {/* 💡 Toast Notification Component Call */}
             <ToastNotification 
                 show={isDownloading} 
-                message="✅ CV Download started! Check your notifications." 
+                message="✅ CV Download started." 
             />
 
             {/* 💻 Desktop Navbar */}
@@ -198,7 +198,7 @@ const Navbar = ({ currentPage, setPage }) => {
                 <div className="flex justify-between items-center"> 
                     {/* Name ONLY for mobile */}
                     <div className="flex items-center text-white text-2xl font-fancy font-semibold"> 
-                        <span>Sudais</span> 
+                        <span>Sudais Zafar</span> 
                     </div>
                     
                     {/* MOBILE CV DOWNLOAD BUTTON */}
