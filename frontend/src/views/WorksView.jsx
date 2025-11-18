@@ -1,19 +1,22 @@
 import React from 'react';
 import { ModernCard } from '../components/UtilityComponents';
 import { profileData } from '../data';
+// Assuming 'figmalogo.jpg' is the specific image you want for the new project
+import newProjectImage from '../assets/figmalogo.jpg'; 
 
-// --- UPDATED ProjectCard Component with Image Fix (object-top) ---
+
+// --- UPDATED ProjectCard Component with Increased Height (h-48) ---
 const ProjectCard = ({ project }) => (
   <ModernCard className="space-y-4">
     {/* Project Image Section */}
-    <div className="w-full h-40 bg-gray-800 rounded-xl overflow-hidden shadow-inner">
+    {/* FIX: Increased container height to h-48 */}
+    <div className="w-full h-48 bg-gray-800 rounded-xl overflow-hidden shadow-inner flex items-center justify-center">
       <img
         src={project.imageUrl}
         alt={project.name}
-        // FIX: Changed className from "w-full h-full object-cover" 
-        // to "w-full h-full object-cover object-top"
-        className="w-full h-full object-cover object-top" 
-        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x160/1B2332/ffffff?text=Project+Placeholder"; }}
+        // Reverted to object-cover object-center to fill the space
+        className="w-full h-full object-cover object-center" 
+        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x192/1B2332/ffffff?text=Project+Placeholder"; }}
       />
     </div>
 
@@ -35,13 +38,11 @@ const ProjectCard = ({ project }) => (
       {project.projectUrl && (
         <a 
           href={project.projectUrl}
-          target="_blank"
+          target="_blank" 
           rel="noopener noreferrer"
-          // Minimalist Design classes retained
           className="text-sm font-semibold text-cyan-400 border border-cyan-400 px-3 py-1 transition-all duration-300 ease-in-out hover:bg-cyan-400 hover:text-gray-900 flex items-center group whitespace-nowrap"
         >
           View 
-          {/* Arrow Icon Size Adjusted */}
           <svg 
             className="w-3.5 h-3.5 ml-1 transition-transform duration-300 group-hover:translate-x-1" 
             fill="none" 
@@ -58,15 +59,30 @@ const ProjectCard = ({ project }) => (
   </ModernCard>
 );
 
-const WorksView = () => (
-  <div className="space-y-10">
-    <h2 className="text-3xl font-bold text-white border-b border-gray-700 pb-2">MY WORKS</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {profileData.projects.map((project, index) => (
-        <ProjectCard key={index} project={project} />
-      ))}
-    </div>
-  </div>
-);
+
+const WorksView = () => {
+    // New project added temporarily here
+    const newProject = {
+        name: "E-Commerce App Mockup (New)",
+        description: "A comprehensive design project showcasing modern UI/UX principles for a clothing e-commerce platform.",
+        software: "Figma, Adobe Illustrator",
+        imageUrl: newProjectImage, // The imported image
+        projectUrl: newProjectImage, // Clicking 'View' will open this image in a new tab
+    };
+
+    const allProjects = [...profileData.projects, newProject];
+
+
+    return (
+        <div className="space-y-10">
+            <h2 className="text-3xl font-bold text-white border-b border-gray-700 pb-2">MY WORKS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {allProjects.map((project, index) => (
+                    <ProjectCard key={index} project={project} /> 
+                ))}
+            </div>
+        </div>
+    );
+};
 
 export default WorksView;

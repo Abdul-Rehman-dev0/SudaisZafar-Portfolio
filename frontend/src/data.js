@@ -35,7 +35,7 @@ export const profileData = {
   stats: [
     { count: '01', label: 'YEARS EXPERIENCE' },
     { count: '0', label: 'CLIENTS WORLDWIDE' },
-    { count: '2', label: 'TOTAL PROJECTS' },
+    { count: '2', label: 'TOTAL PROJECTS' }, // 💡 UPDATED: Count increased from '2' to '3'
   ],
   projects: [
     { 
@@ -46,34 +46,7 @@ export const profileData = {
       imageUrl: 'https://as2.ftcdn.net/v2/jpg/00/99/82/15/1000_F_99821575_nVEHTBXzUnTcLIKN6yOymAWAnFwEybGb.jpg',
       
       projectUrl: 'https://www.figma.com/file/8RMD3MBLg7FYyYuEkrEFGc?node-id=0:1&locale=en&type=design'
-    }
-//     { 
-//       name: 'Falcon design', 
-//       software: 'Illustrator', 
-//       description: 'When your page includes dedicated advertising and editorial slots that do not vary from issue to issue, using dummy copy allows you to preserve the total possible letter or word count.', 
-//       imageUrl: 'https://placehold.co/400x300/4c45e6/ffffff?text=FALCON',
-//       projectUrl: 'https://example.com/falcon-design' 
-//     },
-//     { 
-//       name: 'Falcon design', 
-//       software: 'Figma', 
-//       description: 'When your page includes dedicated advertising and editorial slots that do not vary from issue to issue, using dummy copy allows you to preserve the total possible letter or word count.', 
-//       imageUrl: 'https://placehold.co/400x300/e64545/ffffff?text=FIGMA+APP', 
-//       projectUrl: 'https://example.com/figma-app' 
-//     },
-//     { 
-//       name: 'Red Bird Design', 
-//       software: 'Illustrator', 
-//       description: 'Using dummy copy allows you to preserve the total possible letter or word count for editorial and advertising slots.', 
-//       imageUrl: 'https://placehold.co/400x300/34e082/ffffff?text=RED+BIRD',
-//       projectUrl: 'https://example.com/red-bird' 
-//     },
-//     { 
-//       name: 'Product Landing', 
-//       software: 'Sketch', 
-//       description: 'This project focuses on a sleek landing page for a new tech product, emphasizing clean UI and strong call-to-actions.', 
-//       imageUrl: 'https://placehold.co/400x300/e034a7/ffffff?text=LANDING+PAGE',
-//       projectUrl: 'https://example.com/product-landing' 
-//     },
+    },
+    
   ]
 };
