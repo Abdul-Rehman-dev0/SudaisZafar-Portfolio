@@ -13,7 +13,7 @@ const ModernCard = ({ children, className = '' }) => (
 
 
 // IMPORTANT: Replace this with the URL where your backend server is running.
-const API_ENDPOINT = 'https://sudais-zafar-portfolio-75dp.vercel.app/send-email';
+const API_ENDPOINT = 'https://sudais-zafar-portfolio-j3ps.vercel.app/send-email';
 
 
 const ContactForm = () => {
