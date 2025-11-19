@@ -1,7 +1,7 @@
-/* Base Vite styles are usually here. We add custom base styles. */
+/* src/index.css */
+@import "tailwindcss";
 
-/* Apply Inter font and dark background from the start */
-body {
+body { 
   font-family: 'Inter', sans-serif;
   background-color: #0A1019; /* dark-bg color */
   color: white;
